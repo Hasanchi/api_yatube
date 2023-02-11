@@ -2,6 +2,7 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
+from .customtoken import CustomAuthToken
 from .views import CommentViewSet, GroupViewSet, PostViewSet
 
 
@@ -18,4 +19,5 @@ router.register('groups', GroupViewSet, basename='groups')
 
 urlpatterns = [
     path('v1/', include(router.urls)),
+    path('v1/api-token-auth/', CustomAuthToken.as_view()),
 ]
